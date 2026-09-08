@@ -293,6 +293,14 @@
                 color: #333;
             }
             
+            .product-photo-card {
+                border-radius: 20px;
+            }
+            
+            .product-photo-card .gallery-placeholder {
+                border-radius: 20px 20px 0 0;
+            }
+            
             .price-tag-3d {
                 perspective: 1000px;
                 display: flex;
@@ -501,43 +509,52 @@
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6">
-                        <div class="card product-card h-100">
-                            <div class="card-body text-center p-4">
-                                <div class="mb-3">
-                                    <i class="bi bi-person-circle display-1" style="color: var(--primary-color);"></i>
+                        <div class="gallery-item">
+                            <div class="gallery-card product-photo-card" data-title="Llaveros de Retrato" data-desc="Transforma tu foto favorita en un llavero único y personalizado">
+                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #6c63ff, #ff6b6b); height: 280px;">
+                                    <i class="bi bi-person-circle display-1"></i>
                                 </div>
-                                <h5 class="card-title fw-bold">Llaveros de Retrato</h5>
-                                <p class="card-text text-muted">Transforma tu foto favorita en un llavero único y personalizado.</p>
-                                <div class="mt-3">
-                                    <span class="badge bg-primary rounded-pill">$25.000 COP</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card product-card h-100">
-                            <div class="card-body text-center p-4">
-                                <div class="mb-3">
-                                    <i class="bi bi-heart display-1" style="color: var(--secondary-color);"></i>
-                                </div>
-                                <h5 class="card-title fw-bold">Llaveros de Nombres</h5>
-                                <p class="card-text text-muted">Tu nombre o el de alguien especial en un diseño exclusivo.</p>
-                                <div class="mt-3">
-                                    <span class="badge bg-primary rounded-pill">$20.000 COP</span>
+                                <div class="gallery-overlay">
+                                    <h5>Llaveros de Retrato</h5>
+                                    <p>Transforma tu foto favorita en un llavero único y personalizado.</p>
+                                    <div class="mt-2">
+                                        <span class="badge bg-white text-dark rounded-pill">$25.000 COP</span>
+                                    </div>
+                                    <small class="d-block mt-2 opacity-75"><i class="bi bi-zoom-in me-1"></i>Click para ver detalle</small>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <div class="card product-card h-100">
-                            <div class="card-body text-center p-4">
-                                <div class="mb-3">
-                                    <i class="bi bi-stars display-1" style="color: #ffc107;"></i>
+                        <div class="gallery-item">
+                            <div class="gallery-card product-photo-card" data-title="Llaveros de Nombres" data-desc="Tu nombre o el de alguien especial en un diseño exclusivo">
+                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #ffc107); height: 280px;">
+                                    <i class="bi bi-heart display-1"></i>
                                 </div>
-                                <h5 class="card-title fw-bold">Llaveros Temáticos</h5>
-                                <p class="card-text text-muted">Diseños según tu pasión: deportes, música, arte y más.</p>
-                                <div class="mt-3">
-                                    <span class="badge bg-primary rounded-pill">$22.000 COP</span>
+                                <div class="gallery-overlay">
+                                    <h5>Llaveros de Nombres</h5>
+                                    <p>Tu nombre o el de alguien especial en un diseño exclusivo.</p>
+                                    <div class="mt-2">
+                                        <span class="badge bg-white text-dark rounded-pill">$20.000 COP</span>
+                                    </div>
+                                    <small class="d-block mt-2 opacity-75"><i class="bi bi-zoom-in me-1"></i>Click para ver detalle</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="gallery-item">
+                            <div class="gallery-card product-photo-card" data-title="Llaveros Temáticos" data-desc="Diseños según tu pasión: deportes, música, arte y más">
+                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #ffc107, #28a745); height: 280px;">
+                                    <i class="bi bi-stars display-1"></i>
+                                </div>
+                                <div class="gallery-overlay">
+                                    <h5>Llaveros Temáticos</h5>
+                                    <p>Diseños según tu pasión: deportes, música, arte y más.</p>
+                                    <div class="mt-2">
+                                        <span class="badge bg-white text-dark rounded-pill">$22.000 COP</span>
+                                    </div>
+                                    <small class="d-block mt-2 opacity-75"><i class="bi bi-zoom-in me-1"></i>Click para ver detalle</small>
                                 </div>
                             </div>
                         </div>

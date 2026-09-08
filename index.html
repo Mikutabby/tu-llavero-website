@@ -146,18 +146,22 @@
                 height: 300px;
                 position: relative;
                 transform-style: preserve-3d;
-                animation: rotate3d 6s ease-in-out infinite;
+                animation: float3d 4s ease-in-out infinite;
                 cursor: pointer;
+                transition: transform 0.3s ease;
             }
             
             .price-card:hover {
                 animation-play-state: paused;
+                transform: scale(1.05) rotateY(10deg);
             }
             
-            @keyframes rotate3d {
-                0% { transform: rotateY(0deg) rotateX(10deg); }
-                50% { transform: rotateY(180deg) rotateX(-10deg); }
-                100% { transform: rotateY(360deg) rotateX(10deg); }
+            @keyframes float3d {
+                0% { transform: translateY(0px) rotateY(0deg) rotateX(5deg); }
+                25% { transform: translateY(-15px) rotateY(5deg) rotateX(0deg); }
+                50% { transform: translateY(0px) rotateY(0deg) rotateX(-5deg); }
+                75% { transform: translateY(15px) rotateY(-5deg) rotateX(0deg); }
+                100% { transform: translateY(0px) rotateY(0deg) rotateX(5deg); }
             }
             
             .price-front {
@@ -533,15 +537,21 @@
             if (priceCard) {
                 priceCard.addEventListener('click', function() {
                     this.style.animation = 'none';
+                    this.style.transform = 'scale(1.1) rotateY(360deg)';
                     setTimeout(() => {
-                        this.style.animation = 'rotate3d 6s ease-in-out infinite';
-                    }, 10);
+                        this.style.transform = '';
+                        this.style.animation = 'float3d 4s ease-in-out infinite';
+                    }, 600);
                 });
                 
                 document.addEventListener('mousemove', (e) => {
-                    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-                    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-                    priceCard.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                    const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
+                    const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
+                    priceCard.style.transform = `translateY(0px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                });
+                
+                priceCard.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
                 });
             }
         </script>

@@ -239,6 +239,60 @@
                 opacity: 0.9;
             }
             
+            .modal {
+                backdrop-filter: blur(10px);
+            }
+            
+            .modal-content {
+                border-radius: 20px;
+                overflow: hidden;
+            }
+            
+            .zoom-container {
+                overflow: hidden;
+                border-radius: 15px;
+                cursor: grab;
+                background: rgba(0,0,0,0.3);
+                min-height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .zoom-container:active {
+                cursor: grabbing;
+            }
+            
+            .zoom-image {
+                width: 100%;
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 5rem;
+                transition: transform 0.3s ease;
+                transform-origin: center center;
+            }
+            
+            .zoom-controls {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .zoom-controls .btn {
+                border-radius: 25px;
+                padding: 0.5rem 1rem;
+                transition: all 0.3s ease;
+            }
+            
+            .zoom-controls .btn:hover {
+                transform: scale(1.05);
+                background: white;
+                color: #333;
+            }
+            
             .price-tag-3d {
                 perspective: 1000px;
                 display: flex;
@@ -530,20 +584,21 @@
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
-                            <div class="gallery-card">
+                            <div class="gallery-card" data-title="Llavero Corazón" data-desc="Diseño personalizado">
                                 <div class="gallery-placeholder" style="background: linear-gradient(135deg, #6c63ff, #ff6b6b);">
                                     <i class="bi bi-heart-fill display-1"></i>
                                 </div>
                                 <div class="gallery-overlay">
                                     <h5>Llavero Corazón</h5>
                                     <p>Diseño personalizado</p>
+                                    <small class="d-block mt-2 opacity-75"><i class="bi bi-zoom-in me-1"></i>Click para ver detalle</small>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
-                            <div class="gallery-card">
+                            <div class="gallery-card" data-title="Llavero Estrella" data-desc="Diseño único">
                                 <div class="gallery-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #ffc107);">
                                     <i class="bi bi-star-fill display-1"></i>
                                 </div>
@@ -666,15 +721,67 @@
                 </div>
             </div>
         </footer>
+
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content bg-dark border-0">
+                    <div class="modal-header border-0 pb-0">
+                        <h5 class="modal-title text-white fw-bold" id="modalTitle"></h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="zoom-container" id="zoomContainer">
+                            <div class="zoom-image" id="zoomImage">
+                                <i class="bi bi-image display-1"></i>
+                            </div>
+                        </div>
+                        <p class="text-white mt-3" id="modalDesc"></p>
+                        <div class="zoom-controls mt-3">
+                            <button class="btn btn-outline-light btn-sm me-2" id="zoomIn">
+                                <i class="bi bi-plus-lg"></i> Acercar
+                            </button>
+                            <button class="btn btn-outline-light btn-sm me-2" id="zoomOut">
+                                <i class="bi bi-dash-lg"></i> Alejar
+                            </button>
+                            <button class="btn btn-outline-light btn-sm" id="zoomReset">
+                                <i class="bi bi-arrow-counterclockwise"></i> Reset
+                            </button>
+                        </div>
+                        <small class="text-white-50 d-block mt-2">Usa la rueda del mouse o los botones para hacer zoom</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/scripts.js"></script>
         <script>
+            let currentZoom = 1;
+            const zoomStep = 0.25;
+            const minZoom = 0.5;
+            const maxZoom = 3;
+            
             document.querySelectorAll('.gallery-card').forEach(card => {
                 card.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.95) rotateX(0deg) rotateY(0deg)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 200);
+                    const title = this.dataset.title;
+                    const desc = this.dataset.desc;
+                    const placeholder = this.querySelector('.gallery-placeholder');
+                    const bg = placeholder.style.background;
+                    const icon = placeholder.querySelector('i');
+                    const iconClass = icon ? icon.className : 'bi bi-image';
+                    
+                    document.getElementById('modalTitle').textContent = title;
+                    document.getElementById('modalDesc').textContent = desc;
+                    
+                    const zoomImage = document.getElementById('zoomImage');
+                    zoomImage.style.background = bg;
+                    zoomImage.innerHTML = `<i class="${iconClass} display-1"></i>`;
+                    
+                    currentZoom = 1;
+                    updateZoom();
+                    
+                    const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+                    modal.show();
                 });
                 
                 card.addEventListener('mousemove', function(e) {
@@ -692,6 +799,42 @@
                 card.addEventListener('mouseleave', function() {
                     this.style.transform = '';
                 });
+            });
+            
+            function updateZoom() {
+                const zoomImage = document.getElementById('zoomImage');
+                if (zoomImage) {
+                    zoomImage.style.transform = `scale(${currentZoom})`;
+                }
+            }
+            
+            document.getElementById('zoomIn').addEventListener('click', () => {
+                if (currentZoom < maxZoom) {
+                    currentZoom += zoomStep;
+                    updateZoom();
+                }
+            });
+            
+            document.getElementById('zoomOut').addEventListener('click', () => {
+                if (currentZoom > minZoom) {
+                    currentZoom -= zoomStep;
+                    updateZoom();
+                }
+            });
+            
+            document.getElementById('zoomReset').addEventListener('click', () => {
+                currentZoom = 1;
+                updateZoom();
+            });
+            
+            document.getElementById('zoomContainer').addEventListener('wheel', (e) => {
+                e.preventDefault();
+                if (e.deltaY < 0 && currentZoom < maxZoom) {
+                    currentZoom += zoomStep;
+                } else if (e.deltaY > 0 && currentZoom > minZoom) {
+                    currentZoom -= zoomStep;
+                }
+                updateZoom();
             });
         </script>
     </body>

@@ -239,6 +239,54 @@
                 opacity: 0.9;
             }
             
+            .presentation-card {
+                border-radius: 20px;
+                transform-style: preserve-3d;
+                transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .presentation-card:hover {
+                transform: translateY(-15px) rotateX(5deg);
+                box-shadow: 
+                    0 30px 60px rgba(0,0,0,0.15),
+                    0 0 30px rgba(108, 99, 255, 0.1);
+            }
+            
+            .presentation-card .gallery-placeholder {
+                border-radius: 20px 20px 0 0;
+                transition: all 0.5s ease;
+                position: relative;
+            }
+            
+            .presentation-card:hover .gallery-placeholder {
+                transform: scale(1.03);
+                filter: brightness(1.05);
+            }
+            
+            .presentation-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.2),
+                    transparent
+                );
+                transition: left 0.6s ease;
+                z-index: 1;
+                pointer-events: none;
+            }
+            
+            .presentation-card:hover::before {
+                left: 100%;
+            }
+            
             .modal {
                 backdrop-filter: blur(10px);
             }
@@ -729,7 +777,7 @@
                 <div class="row g-4 justify-content-center">
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
-                            <div class="gallery-card" data-title="Caja Modelo" data-desc="Nuestra presentación estándar con diseño premium">
+                            <div class="gallery-card presentation-card" data-title="Caja Modelo" data-desc="Nuestra presentación estándar con diseño premium">
                                 <div class="gallery-placeholder" style="background: linear-gradient(135deg, #2d3436, #636e72);">
                                     <i class="bi bi-box-seam-fill display-1"></i>
                                 </div>
@@ -743,7 +791,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
-                            <div class="gallery-card" data-title="Caja Personalizada" data-desc="Diseña tu propia caja con colores y mensaje">
+                            <div class="gallery-card presentation-card" data-title="Caja Personalizada" data-desc="Diseña tu propia caja con colores y mensaje">
                                 <div class="gallery-placeholder" style="background: linear-gradient(135deg, #6c63ff, #a855f7);">
                                     <i class="bi bi-gift-fill display-1"></i>
                                 </div>
@@ -757,7 +805,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
-                            <div class="gallery-card" data-title="Combo" data-desc="Llavero + caja personalizada + regalo sorpresa">
+                            <div class="gallery-card presentation-card" data-title="Combo" data-desc="Llavero + caja personalizada + regalo sorpresa">
                                 <div class="gallery-placeholder" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
                                     <i class="bi bi-stars display-1"></i>
                                 </div>

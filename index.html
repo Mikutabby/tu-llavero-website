@@ -287,6 +287,19 @@
                 left: 100%;
             }
             
+            .product-image {
+                width: 100%;
+                height: 280px;
+                object-fit: cover;
+                border-radius: 20px 20px 0 0;
+                transition: all 0.5s ease;
+            }
+            
+            .gallery-card:hover .product-image {
+                transform: scale(1.05);
+                filter: brightness(1.1);
+            }
+            
             .modal {
                 backdrop-filter: blur(10px);
             }
@@ -630,14 +643,12 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
                             <div class="gallery-card product-photo-card" data-title="Llaveros de Retrato" data-desc="Transforma tu foto favorita en un llavero único y personalizado">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #6c63ff, #ff6b6b); height: 280px;">
-                                    <i class="bi bi-person-circle display-1"></i>
-                                </div>
+                                <img src="assets/img/products/llavero retrato.jpg" alt="Llavero de Retrato" class="product-image">
                                 <div class="gallery-overlay">
                                     <h5>Llaveros de Retrato</h5>
                                     <p>Transforma tu foto favorita en un llavero único y personalizado.</p>
                                     <div class="mt-2">
-                                        <span class="badge bg-white text-dark rounded-pill">$25.000 COP</span>
+                                        <span class="badge bg-white text-dark rounded-pill">$15.000 COP</span>
                                     </div>
                                     <small class="d-block mt-2 opacity-75"><i class="bi bi-zoom-in me-1"></i>Click para ver detalle</small>
                                 </div>
@@ -647,14 +658,12 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
                             <div class="gallery-card product-photo-card" data-title="Llaveros de Nombres" data-desc="Tu nombre o el de alguien especial en un diseño exclusivo">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #ffc107); height: 280px;">
-                                    <i class="bi bi-heart display-1"></i>
-                                </div>
+                                <img src="assets/img/products/llaveros nombres.jpg" alt="Llaveros de Nombres" class="product-image">
                                 <div class="gallery-overlay">
                                     <h5>Llaveros de Nombres</h5>
                                     <p>Tu nombre o el de alguien especial en un diseño exclusivo.</p>
                                     <div class="mt-2">
-                                        <span class="badge bg-white text-dark rounded-pill">$20.000 COP</span>
+                                        <span class="badge bg-white text-dark rounded-pill">$15.000 COP</span>
                                     </div>
                                     <small class="d-block mt-2 opacity-75"><i class="bi bi-zoom-in me-1"></i>Click para ver detalle</small>
                                 </div>
@@ -664,14 +673,12 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
                             <div class="gallery-card product-photo-card" data-title="Llaveros Temáticos" data-desc="Diseños según tu pasión: deportes, música, arte y más">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #ffc107, #28a745); height: 280px;">
-                                    <i class="bi bi-stars display-1"></i>
-                                </div>
+                                <img src="assets/img/products/llavero tematico .jpg" alt="Llaveros Temáticos" class="product-image">
                                 <div class="gallery-overlay">
                                     <h5>Llaveros Temáticos</h5>
                                     <p>Diseños según tu pasión: deportes, música, arte y más.</p>
                                     <div class="mt-2">
-                                        <span class="badge bg-white text-dark rounded-pill">$22.000 COP</span>
+                                        <span class="badge bg-white text-dark rounded-pill">$15.000 COP</span>
                                     </div>
                                     <small class="d-block mt-2 opacity-75"><i class="bi bi-zoom-in me-1"></i>Click para ver detalle</small>
                                 </div>
@@ -724,9 +731,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
                             <div class="gallery-card" data-title="Llavero Corazón" data-desc="Diseño personalizado">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #6c63ff, #ff6b6b);">
-                                    <i class="bi bi-heart-fill display-1"></i>
-                                </div>
+                                <img src="assets/img/products/llavero corazon.jpg" alt="Llavero Corazón" class="product-image">
                                 <div class="gallery-overlay">
                                     <h5>Llavero Corazón</h5>
                                     <p>Diseño personalizado</p>
@@ -738,9 +743,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
                             <div class="gallery-card" data-title="Llavero Estrella" data-desc="Diseño único">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #ffc107);">
-                                    <i class="bi bi-star-fill display-1"></i>
-                                </div>
+                                <img src="assets/img/products/llavero estrella.jpg" alt="Llavero Estrella" class="product-image">
                                 <div class="gallery-overlay">
                                     <h5>Llavero Estrella</h5>
                                     <p>Diseño único</p>
@@ -750,10 +753,8 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
-                            <div class="gallery-card">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #ffc107, #28a745);">
-                                    <i class="bi bi-moon-fill display-1"></i>
-                                </div>
+                            <div class="gallery-card" data-title="Llavero Luna" data-desc="Diseño exclusivo">
+                                <img src="assets/img/products/llavero luna.jpg" alt="Llavero Luna" class="product-image">
                                 <div class="gallery-overlay">
                                     <h5>Llavero Luna</h5>
                                     <p>Diseño exclusivo</p>
@@ -763,10 +764,8 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
-                            <div class="gallery-card">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #28a745, #17a2b8);">
-                                    <i class="bi bi-sun-fill display-1"></i>
-                                </div>
+                            <div class="gallery-card" data-title="Llavero Sol" data-desc="Diseño vibrante">
+                                <img src="assets/img/products/llavero sol.jpg" alt="Llavero Sol" class="product-image">
                                 <div class="gallery-overlay">
                                     <h5>Llavero Sol</h5>
                                     <p>Diseño vibrante</p>
@@ -776,10 +775,8 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
-                            <div class="gallery-card">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #17a2b8, #6f42c1);">
-                                    <i class="bi bi-cloud-fill display-1"></i>
-                                </div>
+                            <div class="gallery-card" data-title="Llavero Nube" data-desc="Diseño creativo">
+                                <img src="assets/img/products/llavero nube.jpg" alt="Llavero Nube" class="product-image">
                                 <div class="gallery-overlay">
                                     <h5>Llavero Nube</h5>
                                     <p>Diseño creativo</p>
@@ -789,10 +786,8 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-item">
-                            <div class="gallery-card">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #6f42c1, #e83e8c);">
-                                    <i class="bi bi-lightning-fill display-1"></i>
-                                </div>
+                            <div class="gallery-card" data-title="Llavero Rayo" data-desc="Diseño dinámico">
+                                <img src="assets/img/products/llavero rayo.jpg" alt="Llavero Rayo" class="product-image">
                                 <div class="gallery-overlay">
                                     <h5>Llavero Rayo</h5>
                                     <p>Diseño dinámico</p>
@@ -811,54 +806,21 @@
             <div class="container">
                 <div class="text-center mb-5">
                     <h2 class="section-title">Presentación</h2>
-                    <p class="lead text-muted">Elige cómo quieres recibir tu llavero</p>
+                    <p class="lead text-muted">Así viene tu llavero</p>
                 </div>
                 <div class="row g-4 justify-content-center">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-6 col-md-8">
                         <div class="gallery-item">
                             <div class="gallery-card presentation-card" data-title="Caja Modelo" data-desc="Nuestra presentación estándar con diseño premium">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #2d3436, #636e72);">
-                                    <i class="bi bi-box-seam-fill display-1"></i>
-                                </div>
+                                <img src="assets/img/products/caja modelo.jpg" alt="Caja Modelo" class="product-image">
                                 <div class="gallery-overlay">
-                                    <h5>1. Caja Modelo</h5>
-                                    <p>Presentación estándar</p>
+                                    <h5>Caja Modelo</h5>
+                                    <p>Presentación estándar con diseño premium</p>
                                     <small class="d-block mt-2 opacity-75"><i class="bi bi-zoom-in me-1"></i>Click para ver detalle</small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="gallery-item">
-                            <div class="gallery-card presentation-card" data-title="Caja Personalizada" data-desc="Diseña tu propia caja con colores y mensaje">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #6c63ff, #a855f7);">
-                                    <i class="bi bi-gift-fill display-1"></i>
-                                </div>
-                                <div class="gallery-overlay">
-                                    <h5>2. Caja Personalizada</h5>
-                                    <p>Diseña tu caja</p>
-                                    <small class="d-block mt-2 opacity-75"><i class="bi bi-zoom-in me-1"></i>Click para ver detalle</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="gallery-item">
-                            <div class="gallery-card presentation-card" data-title="Combo" data-desc="Llavero + caja personalizada + regalo sorpresa">
-                                <div class="gallery-placeholder" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
-                                    <i class="bi bi-stars display-1"></i>
-                                </div>
-                                <div class="gallery-overlay">
-                                    <h5>3. Combo</h5>
-                                    <p>Llavero + caja + regalo</p>
-                                    <small class="d-block mt-2 opacity-75"><i class="bi bi-zoom-in me-1"></i>Click para ver detalle</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-5">
-                    <a href="#contacto" class="btn btn-primary btn-lg">Elige tu Presentación</a>
                 </div>
             </div>
         </section>
@@ -960,17 +922,23 @@
                 card.addEventListener('click', function() {
                     const title = this.dataset.title;
                     const desc = this.dataset.desc;
+                    const img = this.querySelector('.product-image');
                     const placeholder = this.querySelector('.gallery-placeholder');
-                    const bg = placeholder.style.background;
-                    const icon = placeholder.querySelector('i');
-                    const iconClass = icon ? icon.className : 'bi bi-image';
                     
                     document.getElementById('modalTitle').textContent = title;
                     document.getElementById('modalDesc').textContent = desc;
                     
                     const zoomImage = document.getElementById('zoomImage');
-                    zoomImage.style.background = bg;
-                    zoomImage.innerHTML = `<i class="${iconClass} display-1"></i>`;
+                    
+                    if (img) {
+                        zoomImage.innerHTML = `<img src="${img.src}" alt="${img.alt}" style="max-width: 100%; max-height: 400px; border-radius: 10px;">`;
+                    } else if (placeholder) {
+                        const bg = placeholder.style.background;
+                        const icon = placeholder.querySelector('i');
+                        const iconClass = icon ? icon.className : 'bi bi-image';
+                        zoomImage.style.background = bg;
+                        zoomImage.innerHTML = `<i class="${iconClass} display-1"></i>`;
+                    }
                     
                     currentZoom = 1;
                     updateZoom();

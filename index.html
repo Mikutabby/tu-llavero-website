@@ -555,7 +555,7 @@
         </style>
     </head>
     <body>
-        <audio id="bgMusic" loop preload="auto">
+        <audio id="bgMusic" loop preload="auto" muted>
             <source src="assets/audio/inspiring-acoustic.mp3" type="audio/mpeg">
         </audio>
         <div id="musicControl" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4); display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; font-size: 1.2rem;">
@@ -569,26 +569,31 @@
                 
                 audio.volume = 0.3;
                 
-                // Auto-play music when page loads
+                // Try to auto-play (muted first, then unmute)
                 audio.play().then(function() {
+                    audio.muted = false;
                     isPlaying = true;
                     musicControl.innerHTML = '<i class="bi bi-pause-fill"></i>';
                 }).catch(function(e) {
                     console.log('Auto-play prevented:', e);
-                    // If auto-play is blocked, wait for user interaction
-                    document.addEventListener('click', function playAudio() {
+                });
+                
+                // Also try on any user interaction
+                document.addEventListener('click', function() {
+                    if (!isPlaying) {
+                        audio.muted = false;
                         audio.play();
                         isPlaying = true;
                         musicControl.innerHTML = '<i class="bi bi-pause-fill"></i>';
-                        document.removeEventListener('click', playAudio);
-                    }, { once: true });
-                });
+                    }
+                }, { once: true });
                 
                 musicControl.addEventListener('click', function() {
                     if (isPlaying) {
                         audio.pause();
                         musicControl.innerHTML = '<i class="bi bi-play-fill"></i>';
                     } else {
+                        audio.muted = false;
                         audio.play();
                         musicControl.innerHTML = '<i class="bi bi-pause-fill"></i>';
                     }

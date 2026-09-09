@@ -569,22 +569,42 @@
                 
                 audio.volume = 0.3;
                 
-                // Try to auto-play (muted first, then unmute)
-                audio.play().then(function() {
-                    audio.muted = false;
-                    isPlaying = true;
-                    musicControl.innerHTML = '<i class="bi bi-pause-fill"></i>';
-                }).catch(function(e) {
-                    console.log('Auto-play prevented:', e);
-                });
+                // Play music on mouse movement
+                document.addEventListener('mousemove', function() {
+                    if (!isPlaying) {
+                        audio.muted = false;
+                        audio.play().then(function() {
+                            isPlaying = true;
+                            musicControl.innerHTML = '<i class="bi bi-pause-fill"></i>';
+                        }).catch(function(e) {
+                            console.log('Auto-play prevented:', e);
+                        });
+                    }
+                }, { once: true });
                 
-                // Also try on any user interaction
+                // Also play on scroll
+                document.addEventListener('scroll', function() {
+                    if (!isPlaying) {
+                        audio.muted = false;
+                        audio.play().then(function() {
+                            isPlaying = true;
+                            musicControl.innerHTML = '<i class="bi bi-pause-fill"></i>';
+                        }).catch(function(e) {
+                            console.log('Auto-play prevented:', e);
+                        });
+                    }
+                }, { once: true });
+                
+                // Also play on click
                 document.addEventListener('click', function() {
                     if (!isPlaying) {
                         audio.muted = false;
-                        audio.play();
-                        isPlaying = true;
-                        musicControl.innerHTML = '<i class="bi bi-pause-fill"></i>';
+                        audio.play().then(function() {
+                            isPlaying = true;
+                            musicControl.innerHTML = '<i class="bi bi-pause-fill"></i>';
+                        }).catch(function(e) {
+                            console.log('Auto-play prevented:', e);
+                        });
                     }
                 }, { once: true });
                 
